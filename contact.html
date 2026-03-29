@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Franklin M. Tripole</title>
+    <style>
+        /* --- DYNAMIC CSS VARIABLES --- */
+        :root {
+            --primary: #00ff41; 
+            --bg-main: #0a0a0a;
+            --text-main: #f4f4f4;
+            --text-muted: #888;
+            --border-color: #333;
+            --nav-bg: rgba(10, 10, 10, 0.9);
+            --error-color: #ff3333;
+        }
+
+        [data-theme="light"] {
+            --primary: #008a1f; 
+            --bg-main: #f4f4f4;
+            --text-main: #111111;
+            --text-muted: #555;
+            --border-color: #cccccc;
+            --nav-bg: rgba(244, 244, 244, 0.9);
+            --error-color: #cc0000;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-main); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            transition: background-color 0.4s ease, color 0.4s ease;
+            position: relative; /* For the matrix canvas */
+        }
+        
+        .container { width: 85%; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+
+        /* --- NAV --- */
+        nav {
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+            transition: background 0.4s ease, border-color 0.4s ease;
+            position: relative;
+            z-index: 10;
+        }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); text-decoration: none; }
+        nav ul { display: flex; list-style: none; align-items: center;}
+        nav ul li a { color: var(--text-main); text-decoration: none; margin-left: 30px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        nav ul li a:hover { color: var(--primary); }
+        nav ul li a.nav-btn { border: 1px solid var(--primary); padding: 6px 16px; border-radius: 20px; color: var(--bg-main); background: var(--primary); }
+        #theme-toggle { background: none; border: none; cursor: pointer; font-size: 1.2rem; margin-left: 30px; transition: transform 0.3s ease; }
+        #theme-toggle:hover { transform: scale(1.1); }
+
+        /* --- POWERSHELL TERMINAL SECTION --- */
+        section { padding: 40px 0 100px 0; min-height: 85vh; cursor: text; }
+        
+        .ps-system { 
+            font-family: 'Consolas', 'Courier New', monospace; 
+            color: var(--text-muted); 
+            font-size: 0.9rem; 
+            margin-bottom: 30px; 
+            line-height: 1.4;
+        }
+        .ps-system a { color: var(--primary); text-decoration: none; }
+        .ps-system a:hover { text-decoration: underline; }
+        
+        .ps-line { 
+            font-family: 'Consolas', 'Courier New', monospace; 
+            font-size: 1.1rem; 
+            margin-top: 10px; 
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        .ps-path { color: var(--text-main); margin-right: 10px; }
+        .type-text { color: var(--primary); }
+        
+        /* Interactive Input Styles */
+        #cmd-input {
+            background: transparent;
+            border: none;
+            color: var(--primary);
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 1.1rem;
+            outline: none;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        /* --- CONTACT OUTPUT --- */
+        .output-block {
+            font-family: 'Consolas', 'Courier New', monospace;
+            margin: 10px 0 25px 0;
+            line-height: 1.5;
+        }
+
+        .output-block a { color: var(--primary); text-decoration: none; transition: 0.2s; }
+        .output-block a:hover { text-decoration: underline; text-shadow: 0 0 8px rgba(0, 255, 65, 0.4); }
+        .error-text { color: var(--error-color); }
+
+        /* MATRIX CANVAS */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Sits behind the container */
+            pointer-events: none; /* Lets you click through it */
+            display: none;
+            opacity: 0.3; /* Keep it subtle so you can read the terminal */
+        }
+
+        @media (max-width: 768px) {
+            .ps-line { font-size: 0.95rem; }
+            #cmd-input { font-size: 0.95rem; }
+        }
+
+    </style>
+</head>
+<body onclick="document.getElementById('cmd-input').focus();">
+
+    <canvas id="matrix-canvas"></canvas>
+
+    <nav>
+        <div class="container nav-flex">
+            <a href="index.html" class="logo">FT</a>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#projects">Work</a></li>
+                <li><a href="contact.html" class="nav-btn">Contact</a></li>
+                <li><button id="theme-toggle" title="Toggle Light/Dark Mode"></button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="terminal-section">
+        <div class="container">
+            
+            <div class="ps-system" id="ps-header">
+                Windows PowerShell<br>
+                Copyright (C) Microsoft Corporation. All rights reserved.<br><br>
+                Install the latest PowerShell for new features and improvements! <a href="#" target="_blank">https://aka.ms/PSWindows</a><br><br>
+                <span style="color: var(--primary);">Type 'help' to see available commands.</span>
+            </div>
+
+            <div id="terminal-history"></div>
+
+            <div class="ps-line" id="input-container" style="display: none;">
+                <span class="ps-path">PS C:\Users\kraken></span> 
+                <input type="text" id="cmd-input" autocomplete="off" spellcheck="false" autofocus>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        // --- PERSISTENT THEME LOGIC ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const rootElement = document.documentElement;
+        
+        const savedTheme = localStorage.getItem('portfolioTheme');
+        if (savedTheme === 'light') {
+            rootElement.setAttribute('data-theme', 'light');
+            themeToggleBtn.textContent = '🌙';
+        } else {
+            themeToggleBtn.textContent = '☀️';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (rootElement.getAttribute('data-theme') === 'light') {
+                rootElement.removeAttribute('data-theme');
+                localStorage.setItem('portfolioTheme', 'dark');
+                themeToggleBtn.textContent = '☀️'; 
+            } else {
+                rootElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('portfolioTheme', 'light');
+                themeToggleBtn.textContent = '🌙'; 
+            }
+        });
+
+
+        // --- MATRIX EASTER EGG LOGIC ---
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        let matrixInterval = null;
+
+        function startMatrix() {
+            // Force dark mode for the matrix effect
+            rootElement.removeAttribute('data-theme');
+            themeToggleBtn.textContent = '☀️';
+            
+            canvas.style.display = 'block';
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$+-*/=%""\'#&_(),.;:?!\\|{}<>[]^~';
+            const fontSize = 16;
+            const columns = canvas.width / fontSize;
+            const drops = [];
+            for(let x = 0; x < columns; x++) drops[x] = 1;
+
+            if (matrixInterval) clearInterval(matrixInterval);
+            matrixInterval = setInterval(() => {
+                ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#0F0';
+                ctx.font = fontSize + 'px monospace';
+                for(let i = 0; i < drops.length; i++) {
+                    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                    drops[i]++;
+                }
+            }, 33);
+        }
+
+        function stopMatrix() {
+            if (matrixInterval) clearInterval(matrixInterval);
+            canvas.style.display = 'none';
+        }
+
+
+        // --- INTERACTIVE TERMINAL LOGIC ---
+        const historyContainer = document.getElementById('terminal-history');
+        const inputContainer = document.getElementById('input-container');
+        const cmdInput = document.getElementById('cmd-input');
+        const psHeader = document.getElementById('ps-header');
+
+        const contactBlock = `
+            <div style="color: var(--text-muted); margin-bottom: 15px;">> initiating communication protocol... [OK]</div>
+            <div style="display: flex; margin-bottom: 5px;"><div style="color: var(--text-muted); width: 120px;">[Email]</div><div><a href="mailto:tripolefranklin67@gmail.com">tripolefranklin67@gmail.com</a></div></div>
+            <div style="display: flex; margin-bottom: 5px;"><div style="color: var(--text-muted); width: 120px;">[GitHub]</div><div><a href="https://github.com/frankenstein001" target="_blank">github.com/frankenstein001</a></div></div>
+            <div style="display: flex; margin-bottom: 5px;"><div style="color: var(--text-muted); width: 120px;">[Location]</div><div style="color: var(--text-main);">Danao City, Philippines</div></div>
+        `;
+
+        const commands = {
+            'help': `
+                <br>Available commands:<br>
+                <span style="color: var(--primary);">whoami</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Display current user<br>
+                <span style="color: var(--primary);">email</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Get email address<br>
+                <span style="color: var(--primary);">github</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Get GitHub profile link<br>
+                <span style="color: var(--primary);">location</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Display base of operations<br>
+                <span style="color: var(--primary);">ipconfig</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Display network configuration<br>
+                <span style="color: var(--primary);">clear</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Clear the terminal window<br>
+                <span style="color: var(--primary);">./get_contact_info.ps1</span> - Run the full contact script<br>
+            `,
+            'whoami': 'kraken\nFranklin Tripole\nDeveloper',
+            'email': '<a href="mailto:tripolefranklin67@gmail.com">tripolefranklin67@gmail.com</a>',
+            'github': '<a href="https://github.com/frankenstein001" target="_blank">github.com/frankenstein001</a>',
+            'location': 'Danao City, Central Visayas, Philippines',
+            './get_contact_info.ps1': contactBlock,
+            'ipconfig': `
+                <br>Windows IP Configuration<br><br>
+                Ethernet adapter vEthernet (WSL):<br><br>
+                &nbsp;&nbsp;Connection-specific DNS Suffix&nbsp;&nbsp;. : bbrouter<br>
+                &nbsp;&nbsp;IPv4 Address. . . . . . . . . . . : 192.168.1.77<br>
+                &nbsp;&nbsp;Subnet Mask . . . . . . . . . . . : 255.255.255.0<br>
+                &nbsp;&nbsp;Default Gateway . . . . . . . . . : 192.168.1.1<br>
+            `,
+            'ls': 'Directory: C:\\Users\\kraken<br><br>Mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LastWriteTime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Length Name<br>----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;------ ----<br>d-----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3/29/2026&nbsp;&nbsp;03:44 AM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All Safe Database<br>d-----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3/26/2026&nbsp;&nbsp;11:20 PM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;captive-portal-redesign<br>-a----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3/28/2026&nbsp;&nbsp;08:00 AM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1024 get_contact_info.ps1'
+        };
+
+        function printToHistory(text, isCommand = false, isError = false) {
+            const line = document.createElement('div');
+            
+            if (isCommand) {
+                line.className = 'ps-line';
+                line.innerHTML = `<span class="ps-path">PS C:\\Users\\kraken></span> <span class="type-text">${text}</span>`;
+            } else {
+                line.className = 'output-block';
+                if (isError) line.classList.add('error-text');
+                line.innerHTML = text.replace(/\n/g, '<br>'); 
+            }
+            
+            historyContainer.appendChild(line);
+            window.scrollTo(0, document.body.scrollHeight); 
+        }
+
+        cmdInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const cmd = this.value.trim();
+                printToHistory(cmd, true);
+                
+                if (cmd === '') {
+                    // Do nothing
+                } else if (cmd.toLowerCase() === 'clear') {
+                    historyContainer.innerHTML = ''; 
+                    stopMatrix();
+                } else if (cmd.toLowerCase() === 'matrix') {
+                    startMatrix();
+                    printToHistory('Wake up, kraken...\nThe Matrix has you.\n(Type \'clear\' to escape)', false);
+                } else {
+                    const output = commands[cmd.toLowerCase()];
+                    if (output) {
+                        printToHistory(output);
+                    } else {
+                        printToHistory(`${cmd} : The term '${cmd}' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.`, false, true);
+                    }
+                }
+                
+                this.value = '';
+                setTimeout(() => this.focus(), 10);
+            }
+        });
+
+        // --- INITIAL BOOT SEQUENCE ---
+        const bootCommand = "./get_contact_info.ps1";
+        let bootIndex = 0;
+
+        function runBootAnimation() {
+            const bootLine = document.createElement('div');
+            bootLine.className = 'ps-line';
+            bootLine.innerHTML = `<span class="ps-path">PS C:\\Users\\kraken></span> <span class="type-text" id="boot-typewriter"></span><span style="animation: blink 1s step-end infinite;">_</span>`;
+            historyContainer.appendChild(bootLine);
+
+            const typer = document.getElementById('boot-typewriter');
+
+            function typeChar() {
+                if (bootIndex < bootCommand.length) {
+                    typer.textContent += bootCommand.charAt(bootIndex);
+                    bootIndex++;
+                    setTimeout(typeChar, 50);
+                } else {
+                    setTimeout(() => {
+                        bootLine.innerHTML = `<span class="ps-path">PS C:\\Users\\kraken></span> <span class="type-text">${bootCommand}</span>`;
+                        printToHistory(commands[bootCommand]);
+                        inputContainer.style.display = 'flex';
+                        cmdInput.focus();
+                        window.scrollTo(0, document.body.scrollHeight);
+                    }, 400);
+                }
+            }
+            
+            setTimeout(typeChar, 800);
+        }
+
+        window.onload = runBootAnimation;
+
+    </script>
+</body>
+</html>
