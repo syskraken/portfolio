@@ -461,6 +461,44 @@
                 themeToggleBtn.textContent = '🌙'; 
             }
         });
+
+        // --- SECURE VISITOR PING (DISCORD WEBHOOK) ---
+        
+        // 1. Paste your Discord Webhook URL here:
+        const webhookUrl = "https://discord.com/api/webhooks/1487812551684133096/Aw5Va-HdSAD5Z0sG5ik3UtprXFS_7RF-KNWMPFaUh8YpAZ30Va0e016-7bcJOdh81bOI";
+
+        // 2. Check if we already pinged you for this specific user's session
+        if (!sessionStorage.getItem('visitor_pinged')) {
+            
+            // 3. Fetch rough location data (City, Country, ISP) using a free API
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    // 4. Construct the payload matching your terminal aesthetic
+                    const message = {
+                        content: ` **Notification: New Portfolio Visitor!** \n\n**City:** ${data.city || 'Unknown'}\n**Country:** ${data.country_name || 'Unknown'}\n**ISP:** ${data.org || 'Unknown'}\n**Time:** ${new Date().toLocaleTimeString()}`
+                    };
+
+                    // 5. Send the payload silently to Discord
+                    fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(message)
+                    });
+
+                    // 6. Mark this session as 'pinged' so it doesn't spam you on refresh
+                    sessionStorage.setItem('visitor_pinged', 'true');
+                })
+                .catch(error => {
+                    // Fallback just in case they have a strict adblocker blocking the IP API
+                    fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ content: ` **Notification: New Portfolio Visitor!** 🚨\n*(Location data hidden by user's browser)*` })
+                    });
+                    sessionStorage.setItem('visitor_pinged', 'true');
+                });
+        }
     </script>
 </body>
 </html>
