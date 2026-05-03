@@ -453,10 +453,9 @@
         #about { background: var(--bg-alt); }
 
         .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: clamp(40px, 6vw, 80px);
-            align-items: start;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(36px, 5vw, 56px);
         }
 
         .about-text {
@@ -469,9 +468,13 @@
 
         .stat-row {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 12px;
             margin-top: 32px;
+        }
+
+        @media (max-width: 600px) {
+            .stat-row { grid-template-columns: repeat(2, 1fr); }
         }
 
         .stat-card {
@@ -870,7 +873,7 @@
         @media (max-width: 480px) {
             h1.hero-name { letter-spacing: -1px; }
             .terminal-block { padding: 14px 16px; }
-            .stat-row { grid-template-columns: 1fr 1fr; }
+            /* stat-row handled above */
             .btn { font-size: 0.68rem; padding: 11px 18px; }
             footer { flex-direction: column; align-items: flex-start; gap: 10px; }
         }
@@ -926,7 +929,7 @@
                                 <span class="tb-cmd">whoami</span>
                             </div>
                             <div class="tb-line">
-                                <span class="tb-out">→ Full-Stack Web Developer</span>
+                                <span class="tb-out">→ Web Developer</span>
                             </div>
                             <div class="tb-line" style="margin-top:8px;">
                                 <span class="tb-prompt">$</span>
