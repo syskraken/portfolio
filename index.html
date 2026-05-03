@@ -877,6 +877,108 @@
             .btn { font-size: 0.68rem; padding: 11px 18px; }
             footer { flex-direction: column; align-items: flex-start; gap: 10px; }
         }
+
+        /* =========================================================
+           LOCKED CARD & MODAL
+        ========================================================= */
+        .project-card.locked { cursor: pointer; }
+        .project-card.locked::after { font-size: 0.8rem; }
+
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-backdrop.open { opacity: 1; pointer-events: all; }
+
+        .modal-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-bright);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 480px;
+            overflow: hidden;
+            transform: translateY(20px) scale(0.97);
+            transition: transform 0.35s var(--ease);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+        }
+        .modal-backdrop.open .modal-box { transform: translateY(0) scale(1); }
+
+        .modal-bar {
+            background: var(--bg-alt);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .modal-dots { display: flex; gap: 6px; }
+        .modal-dots span { width: 10px; height: 10px; border-radius: 50%; background: var(--border-bright); }
+
+        .modal-title {
+            font-family: "Space Mono", monospace;
+            font-size: 0.68rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            flex: 1;
+        }
+        .modal-close {
+            background: none; border: none; color: var(--text-dim);
+            cursor: pointer; font-size: 0.9rem; padding: 2px 6px;
+            border-radius: 4px; transition: color 0.2s, background 0.2s;
+        }
+        .modal-close:hover { color: var(--text-main); background: var(--border); }
+
+        .modal-body { padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+        .modal-header-row { display: flex; align-items: center; gap: 16px; }
+
+        .modal-proj-icon {
+            width: 48px; height: 48px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; flex-shrink: 0;
+        }
+        .modal-proj-icon img { width: 70%; height: 70%; object-fit: contain; }
+
+        .modal-proj-name { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
+
+        .modal-tag {
+            font-family: "Space Mono", monospace;
+            font-size: 0.62rem; letter-spacing: 1px;
+            color: var(--primary); background: var(--primary-dim);
+            border: 1px solid rgba(0,255,65,0.2);
+            padding: 3px 10px; border-radius: 20px; display: inline-block;
+        }
+        .modal-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+
+        .modal-role {
+            background: var(--bg-alt); border: 1px solid var(--border);
+            border-radius: 8px; padding: 16px;
+        }
+        .modal-role-label {
+            font-family: "Space Mono", monospace;
+            font-size: 0.65rem; color: var(--primary);
+            letter-spacing: 2px; margin-bottom: 8px;
+        }
+        .modal-role p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+
+        .modal-notice {
+            display: flex; align-items: center; gap: 10px;
+            font-family: "Space Mono", monospace;
+            font-size: 0.68rem; color: var(--text-dim); letter-spacing: 0.5px;
+            border-top: 1px solid var(--border); padding-top: 16px;
+        }
     </style>
 </head>
 <body>
@@ -929,7 +1031,7 @@
                                 <span class="tb-cmd">whoami</span>
                             </div>
                             <div class="tb-line">
-                                <span class="tb-out">→ Web Developer</span>
+                                <span class="tb-out">→ Full-Stack Web Developer</span>
                             </div>
                             <div class="tb-line" style="margin-top:8px;">
                                 <span class="tb-prompt">$</span>
@@ -1070,24 +1172,55 @@
                 <span class="cat-line"></span>
             </div>
             <div class="project-grid">
-                <a href="https://www.hppygtm.com/" target="_blank" class="project-card">
-                    <div class="proj-icon"><img src="hppygtm.png" alt="HPPY GTM"></div>
+                <div class="project-card locked" onclick="openModal('hppygtm')">
+                    <div class="proj-icon"><span class="proj-icon-text">HG</span></div>
                     <div class="proj-title">HPPY GTM</div>
                     <p class="proj-desc">High-performance agency site focused on Go-To-Market strategies and conversion optimisation.</p>
                     <span class="proj-tag">Worked Project</span>
-                </a>
-                <a href="https://www.heyethos.com/" target="_blank" class="project-card">
-                    <div class="proj-icon"><img src="ethos.avif" alt="Ethos"></div>
+                </div>
+                <div class="project-card locked" onclick="openModal('ethos')">
+                    <div class="proj-icon"><span class="proj-icon-text">ET</span></div>
                     <div class="proj-title">Ethos</div>
                     <p class="proj-desc">Brand identity platform focused on professional growth and service delivery.</p>
                     <span class="proj-tag">Worked Project</span>
-                </a>
-                <a href="https://www.hppy.agency/" target="_blank" class="project-card">
-                    <div class="proj-icon"><img src="hppyagency.png" alt="HPPY Agency"></div>
+                </div>
+                <div class="project-card locked" onclick="openModal('hppy')">
+                    <div class="proj-icon"><span class="proj-icon-text">HA</span></div>
                     <div class="proj-title">HPPY Hour Agency</div>
                     <p class="proj-desc">The main agency hub for creative and scalable digital solutions.</p>
                     <span class="proj-tag">Company Hub</span>
-                </a>
+                </div>
+            </div>
+
+            <!-- Project Modal -->
+            <div id="proj-modal" class="modal-backdrop" onclick="closeModal()">
+                <div class="modal-box" onclick="event.stopPropagation()">
+                    <div class="modal-bar">
+                        <div class="modal-dots"><span></span><span></span><span></span></div>
+                        <span class="modal-title" id="modal-title"></span>
+                        <button class="modal-close" onclick="closeModal()">✕</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-header-row">
+                            <div class="modal-proj-icon" id="modal-icon"></div>
+                            <div>
+                                <div class="modal-proj-name" id="modal-proj-name"></div>
+                                <div class="modal-tag" id="modal-tag"></div>
+                            </div>
+                        </div>
+                        <p class="modal-desc" id="modal-desc"></p>
+                        <div class="modal-role">
+                            <div class="modal-role-label">// My Role</div>
+                            <p id="modal-role"></p>
+                        </div>
+                        <!--
+                        <div class="modal-notice">
+                            <span>🔒</span>
+                            <span>Live link pending client permission</span>
+                        </div>
+                        -->
+                    </div>
+                </div>
             </div>
 
             <!-- Web & App -->
@@ -1106,7 +1239,7 @@
                     <div class="proj-icon"><span class="proj-icon-text">DI</span></div>
                     <div class="proj-title">Digital Inventory System</div>
                     <p class="proj-desc">Mobile-optimised inventory and item borrowing management app designed for streamlined asset tracking.</p>
-                    <span class="proj-tag">FlutterFlow · Firebase · Dart</span>
+                    <span class="proj-tag">FlutterFlow</span>
                 </a>
             </div>
 
@@ -1226,6 +1359,51 @@
                 mobileMenu.classList.remove('open');
             });
         });
+
+        /* --- Project Modal --- */
+                const modalData = {
+            hppygtm: {
+                name: "HPPY GTM",
+                icon: '<span class="proj-icon-text">HG</span>',
+                tag: "Worked Project",
+                desc: "A high-performance agency site built around Go-To-Market strategy and conversion. Designed to communicate the agency's GTM methodology clearly and drive qualified leads.",
+                role: "Responsible for the full Webflow build — translating design mockups into a responsive, production-ready site. Handled layout, animations, CMS structure, and performance optimisation."
+            },
+            ethos: {
+                name: "Ethos",
+                icon: '<span class="proj-icon-text">ET</span>',
+                tag: "Worked Project",
+                desc: "A brand identity platform focused on positioning professionals and businesses for growth. Clean, editorial design with a strong emphasis on storytelling and service clarity.",
+                role: "Developed the site in Webflow, implementing the visual identity system, responsive layouts, and interactive elements that bring the Ethos brand to life."
+            },
+            hppy: {
+                name: "HPPY Hour Agency",
+                icon: '<span class="proj-icon-text">HA</span>',
+                tag: "Company Hub",
+                desc: "The main agency hub for HPPY Hour — showcasing their creative services, team, and digital capabilities. Built to convert visitors into clients.",
+                role: "Core developer on the agency's own site. Handled the Webflow build, component architecture, page transitions, and ongoing maintenance as the site evolves."
+            }
+        };
+
+        function openModal(id) {
+            const d = modalData[id];
+            if (!d) return;
+            document.getElementById('modal-title').textContent = d.name + ' — project info';
+            document.getElementById('modal-icon').innerHTML = d.icon;
+            document.getElementById('modal-proj-name').textContent = d.name;
+            document.getElementById('modal-tag').textContent = d.tag;
+            document.getElementById('modal-desc').textContent = d.desc;
+            document.getElementById('modal-role').textContent = d.role;
+            document.getElementById('proj-modal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('proj-modal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
         /* --- Discord visitor ping --- */
         const webhookUrl = "https://discord.com/api/webhooks/1487812551684133096/Aw5Va-HdSAD5Z0sG5ik3UtprXFS_7RF-KNWMPFaUh8YpAZ30Va0e016-7bcJOdh81bOI";
