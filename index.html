@@ -72,8 +72,8 @@
                     <div class="hero-img-frame">
                         <!-- Image for desktop, fallback for mobile -->
                         <picture>
-                            <source media="(max-width: 800px)" srcset="franklin-3.png">
-                            <img src="franklin-3.png" alt="Franklin Tripole">
+                            <source media="(max-width: 800px)" srcset="franklin-5.jpg">
+                            <img src="franklin-5.jpg" alt="Franklin Tripole">
                         </picture>
                     </div>
                     <div class="hero-badge">
@@ -507,8 +507,13 @@
             let starCount = 160;
 
             function resize() {
-                W = canvas.width = footer.getBoundingClientRect().width;
-                H = canvas.height = footer.getBoundingClientRect().height;
+                const rect = footer.getBoundingClientRect();
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = rect.width * dpr;
+                canvas.height = rect.height * dpr;
+                ctx.scale(dpr, dpr);
+                W = rect.width;
+                H = rect.height;
                 const mobile = window.matchMedia('(max-width: 640px)').matches;
                 starCount = mobile ? 70 : 160;
                 linkDistance = mobile ? 70 : 110;
