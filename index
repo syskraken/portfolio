@@ -47,7 +47,7 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
-                    <div class="hero-eyebrow">Developer &amp; Builder <img src="philippines.png" alt="Philippines Flag"
+                    <div class="hero-eyebrow">Developer &amp; Builder <img src="./assets/philippines.png" alt="Philippines Flag"
                             width="15px" height="auto"></div>
                     <h1 class="hero-name">Franklin<br>Tripole</h1>
                     <p class="hero-subtitle">
@@ -72,8 +72,8 @@
                     <div class="hero-img-frame">
                         <!-- Image for desktop, fallback for mobile -->
                         <picture>
-                            <source media="(max-width: 800px)" srcset="franklin-5.jpg">
-                            <img src="franklin-5.jpg" alt="Franklin Tripole">
+                            <source media="(max-width: 800px)" srcset="./assets/franklin-5.jpg">
+                            <img src="./assets/franklin-5.jpg" alt="Franklin Tripole">
                         </picture>
                     </div>
                     <div class="hero-badge">
@@ -103,30 +103,30 @@
                     </p>
                     <div class="about-visual-grid">
                         <div class="about-card">
-                            <img src="figma.png" alt="Design showcase">
+                            <img src="./assets/figma.png" alt="Design showcase">
                             <div class="about-card-title">Design systems with polish</div>
                         </div>
                         <div class="about-card">
-                            <img src="vscode.png" alt="Code workspace">
+                            <img src="./assets/vscode.png" alt="Code workspace">
                             <div class="about-card-title">Code that feels smooth</div>
                         </div>
                         <div class="about-card">
-                            <img src="seo.webp" alt="Performance metrics">
+                            <img src="./assets/seo.webp" alt="Performance metrics">
                             <div class="about-card-title">Results-focused performance</div>
                         </div>
 
                     </div>
                     <div class="about-visual-grid">
                         <div class="about-card">
-                            <img src="n8n.webp" alt="Design showcase">
+                            <img src="./assets/n8n.webp" alt="Design showcase">
                             <div class="about-card-title">AI Automation</div>
                         </div>
                         <div class="about-card">
-                            <img src="networking.png" alt="Code workspace">
+                            <img src="./assets/networking.png" alt="Code workspace">
                             <div class="about-card-title">Networking & Security</div>
                         </div>
                         <div class="about-card">
-                            <img src="server.png" alt="Performance metrics">
+                            <img src="./assets/server.png" alt="Performance metrics">
                             <div class="about-card-title">Server-side</div>
                         </div>
 
