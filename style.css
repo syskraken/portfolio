@@ -295,7 +295,7 @@
             pointer-events: none;
             z-index: 0;
             display: block;
-            touch-action: none;
+            /*touch-action: none;*/
         }
 
         header::before {
@@ -981,7 +981,7 @@
             z-index: 0;
             display: block;
             image-rendering: crisp-edges;
-            touch-action: none;
+           /* touch-action: none;*/
         }
 
         footer>*:not(#footer-canvas) {
