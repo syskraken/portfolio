@@ -11,6 +11,26 @@
         href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .tech-category {
+            margin-bottom: 24px;
+        }
+        .tech-category h3 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+        .badge-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .badge-grid img {
+            height: 28px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 
 <body>
@@ -70,7 +90,6 @@
                 </div>
                 <div class="hero-img-wrap">
                     <div class="hero-img-frame">
-                        <!-- Image for desktop, fallback for mobile -->
                         <picture>
                             <source media="(max-width: 800px)" srcset="./assets/franklin-5.jpg">
                             <img src="./assets/franklin-5.jpg" alt="Franklin Tripole">
@@ -88,6 +107,7 @@
         </div>
         <canvas id="hero-canvas"></canvas>
     </header>
+
     <section id="about" class="reveal">
         <div class="container">
             <div class="section-eyebrow">01 / About</div>
@@ -101,37 +121,51 @@
                         technical execution — whether that's a polished agency site, a full-stack web app, or a
                         mobile-optimised system.
                     </p>
-                    <div class="about-visual-grid">
-                        <div class="about-card">
-                            <img src="./assets/figma.png" alt="Design showcase">
-                            <div class="about-card-title">Design systems with polish</div>
-                        </div>
-                        <div class="about-card">
-                            <img src="./assets/vscode.png" alt="Code workspace">
-                            <div class="about-card-title">Code that feels smooth</div>
-                        </div>
-                        <div class="about-card">
-                            <img src="./assets/seo.webp" alt="Performance metrics">
-                            <div class="about-card-title">Results-focused performance</div>
-                        </div>
-
-                    </div>
-                    <div class="about-visual-grid">
-                        <div class="about-card">
-                            <img src="./assets/n8n.webp" alt="Design showcase">
-                            <div class="about-card-title">AI Automation</div>
-                        </div>
-                        <div class="about-card">
-                            <img src="./assets/networking.png" alt="Code workspace">
-                            <div class="about-card-title">Networking & Security</div>
-                        </div>
-                        <div class="about-card">
-                            <img src="./assets/server.png" alt="Performance metrics">
-                            <div class="about-card-title">Server-side</div>
+                    
+                    <div class="stack-group" style="margin-top: 48px;">
+                        <div class="stack-title">Tech stack</div>
+                        
+                        <div class="tech-category">
+                            <h3>Programming Languages</h3>
+                            <div class="badge-grid">
+                                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+                                <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+                                <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+                                <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+                            </div>
                         </div>
 
+                        <div class="tech-category">
+                            <h3>Databases</h3>
+                            <div class="badge-grid">
+                                <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+                                <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase">
+                                <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase">
+                            </div>
+                        </div>
+
+                        <div class="tech-category">
+                            <h3>Operating Systems</h3>
+                            <div class="badge-grid">
+                                <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux">
+                                <img src="https://img.shields.io/badge/Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="Windows">
+                                <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android">
+                            </div>
+                        </div>
+
+                        <div class="tech-category">
+                            <h3>Concepts & Tools</h3>
+                            <div class="badge-grid">
+                                <img src="https://img.shields.io/badge/Virtual%20Machines-0078D4?style=for-the-badge&logo=virtualbox&logoColor=white" alt="Virtual Machines">
+                                <img src="https://img.shields.io/badge/AI%20%26%20Automation-FF4500?style=for-the-badge&logo=tensorflow&logoColor=white" alt="AI & Automation">
+                                <img src="https://img.shields.io/badge/Server--side%20Development-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Server-side Development">
+                                <img src="https://img.shields.io/badge/Networking-0078D4?style=for-the-badge&logo=wireshark&logoColor=white" alt="Networking">
+                                <img src="https://img.shields.io/badge/Security-000000?style=for-the-badge&logo=kalilinux&logoColor=white" alt="Security">
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-grid">
+
+                    <div class="stat-grid" style="margin-top: 48px;">
                         <div class="stat-card">
                             <div class="num">50+</div>
                             <div class="lbl">Projects shipped</div>
@@ -148,41 +182,6 @@
                             <div class="num">∞</div>
                             <div class="lbl">Caffeine units</div>
                         </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="stack-group">
-                        <div class="stack-title">Tech stack</div>
-                        <div class="marquee-wrap">
-                            <div class="marquee-inner">
-                                <span class="pill">Webflow</span><span class="pill">HTML5</span><span
-                                    class="pill">CSS3</span><span class="pill">JavaScript</span><span
-                                    class="pill">PHP</span><span class="pill">MySQL</span><span
-                                    class="pill">FlutterFlow</span><span class="pill">Supabase</span><span
-                                    class="pill">UI/UX</span><span class="pill">Bash</span><span
-                                    class="pill">Networking</span>
-                                <span class="pill">Webflow</span><span class="pill">HTML5</span><span
-                                    class="pill">CSS3</span><span class="pill">JavaScript</span><span
-                                    class="pill">PHP</span><span class="pill">MySQL</span><span
-                                    class="pill">FlutterFlow</span><span class="pill">Supabase</span><span
-                                    class="pill">UI/UX</span><span class="pill">Bash</span><span
-                                    class="pill">Networking</span>
-                                <span class="pill">Webflow</span><span class="pill">HTML5</span><span
-                                    class="pill">CSS3</span><span class="pill">JavaScript</span><span
-                                    class="pill">PHP</span><span class="pill">MySQL</span><span
-                                    class="pill">FlutterFlow</span><span class="pill">Supabase</span><span
-                                    class="pill">UI/UX</span><span class="pill">Bash</span><span
-                                    class="pill">Networking</span>
-                            </div>
-                        </div>
-                        <!--
-                    <div class="marquee-wrap" style="margin-top:8px;">
-                        <div class="marquee-inner" style="animation-direction:reverse;animation-duration:30s;">
-                            <span class="pill">Git</span><span class="pill">Figma</span><span class="pill">Responsive Design</span><span class="pill">REST APIs</span><span class="pill">Agile</span><span class="pill">Performance</span><span class="pill">SEO</span><span class="pill">Linux</span>
-                            <span class="pill">Git</span><span class="pill">Figma</span><span class="pill">Responsive Design</span><span class="pill">REST APIs</span><span class="pill">Agile</span><span class="pill">Performance</span><span class="pill">SEO</span><span class="pill">Linux</span>
-                        </div>
-                    </div>
-                    -->
                     </div>
                 </div>
             </div>
@@ -229,7 +228,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 
     <section id="projects" class="reveal">
@@ -261,132 +259,30 @@
                     <span class="proj-tag">Company Hub</span>
                 </div>
             </div>
-
-            <div class="category-head"><span class="cat-label">Web &amp; Application Development</span><span
-                    class="cat-line"></span></div>
-            <div class="project-grid">
-                <a href="https://software-development.42web.io/" target="_blank" class="project-card">
-                    <div class="proj-icon"><span class="proj-icon-text">SA</span></div>
-                    <div class="proj-title">Scheduler App</div>
-                    <p class="proj-desc">Full-stack scheduling web application for complex timetable management with a
-                        custom relational database backend.</p>
-                    <span class="proj-tag">PHP · JS · MySQL</span>
-                </a>
-                <a href="https://digital-borrowing-gz59mo.flutterflow.app/" target="_blank" class="project-card">
-                    <div class="proj-icon"><span class="proj-icon-text">DI</span></div>
-                    <div class="proj-title">Digital Inventory System</div>
-                    <p class="proj-desc">Mobile-optimised inventory and item borrowing management app designed for
-                        streamlined asset tracking.</p>
-                    <span class="proj-tag">FlutterFlow · Dart · Firebase</span>
-                </a>
-                <a href="https://protectiva.site/" target="_blank" class="project-card">
-                    <div class="proj-icon"><span class="proj-icon-text">YC</span></div>
-                    <div class="proj-title">YT Converter</div>
-                    <p class="proj-desc">A web application built to convert and unshorten URLs, utilizing yt-dlp to
-                        parse and download media files directly.</p>
-                    <span class="proj-tag">Python · HTML · CSS · JS</span>
-                </a>
-            </div>
-
-            <div class="category-head"><span class="cat-label">Academic Archives</span><span class="cat-line"></span>
-            </div>
-            <details class="folder">
-                <summary>~/College Year 2 / Web Design Projects 2020 <span class="s-tag">3 items</span></summary>
-                <div class="folder-body">
-                    <div class="project-grid">
-                        <a href="https://frankenstein001.github.io/Real-Estate-Skyline-Seeker/" target="_blank"
-                            class="project-card">
-                            <div class="proj-icon"><img src="skyline.png" alt="Skyline"></div>
-                            <div class="proj-title">Skyline Seeker</div>
-                            <p class="proj-desc">Real estate browser with custom property filtering and modern UI
-                                design.</p>
-                            <span class="proj-tag">HTML · CSS · JS</span>
-                        </a>
-                        <a href="https://frankenstein001.github.io/vans/" target="_blank" class="project-card">
-                            <div class="proj-icon"><img src="vans.png" alt="Vans"></div>
-                            <div class="proj-title">Vans Clone</div>
-                            <p class="proj-desc">Landing page recreation with focus on visual design and brand
-                                replication.</p>
-                            <span class="proj-tag">HTML · CSS · JS</span>
-                        </a>
-                        <a href="https://frankenstein001.github.io/E-Commerce/" target="_blank" class="project-card">
-                            <div class="proj-icon"><img src="franklin's-vault.png" alt="E-Commerce"></div>
-                            <div class="proj-title">E-Commerce</div>
-                            <p class="proj-desc">Full shopping system with cart functionality and a responsive product
-                                grid.</p>
-                            <span class="proj-tag">HTML · CSS · JS</span>
-                        </a>
-                    </div>
-                </div>
-            </details>
         </div>
     </section>
 
-    <section id="location-map" class="reveal" style="padding: 60px 0;">
-        <div class="container">
-            <div class="section-eyebrow">04 / Location</div>
-            <h2 class="section-title">Based in Danao City, PH</h2>
-            <div id="map"
-                style="width: 100%; height: 450px; border-radius: 20px; border: 1px solid var(--border); overflow: hidden;">
-            </div>
-        </div>
-    </section>
-
-    <footer>
+    <footer id="contact">
         <canvas id="footer-canvas"></canvas>
         <div class="footer-brand">
-            <a href="#home" class="footer-logo">Franklin Tripole</a>
-            <p class="footer-text">Web Developer • Danao City, Philippines • Available for freelance and full-time
-                roles.</p>
-            <div class="footer-links">
-                <a href="https://github.com/syskraken/" target="_blank" rel="noreferrer" aria-label="GitHub">
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path
-                            d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.547-1.387-1.335-1.756-1.335-1.756-1.09-.745.082-.73.082-.73 1.205.084 1.84 1.238 1.84 1.238 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.76-1.605-2.665-.305-5.466-1.334-5.466-5.93 0-1.31.47-2.38 1.235-3.22-.124-.303-.535-1.525.115-3.176 0 0 1.005-.322 3.3 1.23.955-.265 1.98-.398 3-.404 1.02.006 2.045.14 3 .404 2.28-1.552 3.285-1.23 3.285-1.23.655 1.65.245 2.873.12 3.176.77.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.43.37.82 1.096.82 2.21 0 1.595-.015 2.88-.015 3.27 0 .315.21.69.825.575C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/franklin-tripole-157736320" target="_blank" rel="noreferrer"
-                    aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path
-                            d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.82h4.99V24H0V8.82zm7.5 0H12v2.14h.07c.49-.92 1.68-1.9 3.46-1.9 3.7 0 4.38 2.44 4.38 5.6V24h-4.99v-7.8c0-1.86-.03-4.27-2.6-4.27-2.6 0-3 2.04-3 4.14V24H7.5V8.82z" />
-                    </svg>
-                </a>
-                <a href="https://www.facebook.com/franklin.tripole.3" target="_blank" rel="noreferrer"
-                    aria-label="Facebook">
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path
-                            d="M22.675 0H1.325C.593 0 0 .593 0 1.326V22.68c0 .73.593 1.32 1.325 1.32h11.495v-9.84H9.692V11.13h3.128V8.413c0-3.1 1.892-4.788 4.658-4.788 1.325 0 2.466.1 2.797.144v3.24l-1.92.001c-1.504 0-1.796.715-1.796 1.763v2.31h3.59l-.467 3.03h-3.123V24h6.116c.73 0 1.324-.59 1.324-1.32V1.326C24 .593 23.405 0 22.675 0z" />
-                    </svg>
-                </a>
-            </div>
+            <a href="#" class="footer-logo">Franklin Tripole</a>
+            <p class="footer-text">Building high-performance digital experiences from Danao City, Philippines.</p>
         </div>
         <div class="footer-meta">
             <a href="mailto:tripolefranklin67@gmail.com">tripolefranklin67@gmail.com</a>
-            <span>•</span>
-            <a href="resume.pdf" target="_blank">Resume</a>
-            <span>•</span>
-            <a href="https://blog.frankenstein001.dev" target="_blank">Blog</a>
-            <span>•</span>
-            <a href="contact.html">Contact</a>
+            <div class="footer-links">
+                <a href="https://github.com/syskraken" target="_blank">GitHub</a>
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            </div>
         </div>
-        <span class="footer-copy">© 2026 Franklin Tripole</span>
-        <div class="footer-tagline">Crafted with precision and passion</div>
+        <div class="footer-copy">© 2026 Franklin Tripole. All rights reserved.</div>
     </footer>
 
-    <!-- Modal -->
-    <div id="proj-modal" class="modal-backdrop" onclick="closeModal()">
-        <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-backdrop" id="proj-modal">
+        <div class="modal-box">
             <div class="modal-bar">
                 <div class="modal-dots"><span></span><span></span><span></span></div>
-                <span class="modal-title" id="modal-title"></span>
-                <button class="modal-expand" id="modal-expand" onclick="toggleExpand()" title="Expand media">
-                    <svg id="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px">
-                        <path
-                            d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
-                    </svg>
-                </button>
+                <div class="modal-title" id="modal-title-bar">Project Details</div>
                 <button class="modal-close" onclick="closeModal()">✕</button>
             </div>
             <div class="modal-columns">
@@ -394,7 +290,7 @@
                     <div class="modal-header-row">
                         <div class="modal-proj-icon" id="modal-icon"></div>
                         <div>
-                            <div class="modal-proj-name" id="modal-proj-name"></div>
+                            <div class="modal-proj-name" id="modal-name"></div>
                             <div class="modal-tag" id="modal-tag"></div>
                         </div>
                     </div>
@@ -409,100 +305,13 @@
         </div>
     </div>
 
-    <!-- Chatbot -->
-    <div class="chat-widget" id="chat-widget">
-        <div class="chat-panel" id="chat-panel">
-            <div class="chat-header">
-                <div class="chat-avatar">FT</div>
-                <div class="chat-header-info">
-                    <div class="chat-header-name">Ask about Franklin</div>
-                    <div class="chat-header-status">AI · Online</div>
-                </div>
-            </div>
-            <div class="chat-messages" id="chat-messages">
-                <div class="chat-msg bot">
-                    <div class="chat-bubble">Hey! I'm Franklin's AI assistant. Ask me anything about his skills,
-                        projects, or experience. 👋</div>
-                </div>
-            </div>
-            <div class="chat-suggestions" id="chat-suggestions">
-                <button class="chat-suggestion" onclick="sendSuggestion(this)">What tech does he use?</button>
-                <button class="chat-suggestion" onclick="sendSuggestion(this)">Tell me about his projects</button>
-                <button class="chat-suggestion" onclick="sendSuggestion(this)">Is he available for hire?</button>
-            </div>
-            <div class="chat-input-row">
-                <textarea class="chat-input" id="chat-input" placeholder="Ask about Franklin..." rows="1"></textarea>
-                <button class="chat-send" id="chat-send" onclick="sendMessage()">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <line x1="22" y1="2" x2="11" y2="13" />
-                        <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <button class="chat-toggle" id="chat-toggle" onclick="toggleChat()" title="Ask about Franklin">
-            <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-            </svg>
-            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-        </button>
-    </div>
-
-    <!-- Load Google Maps API -->
-    <script async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtrD5bCZHCrm9AV2QzqTdJWbWh3UUpbWA&callback=initMap"></script>
-
     <script>
-        function initMap() {
-            // Exact coordinates for Danao City, Cebu
-            const danaoCity = { lat: 10.5199, lng: 124.0272 };
-            
-            const map = new google.maps.Map(document.getElementById("map"), {
-                center: danaoCity,
-                zoom: 14, // Closer zoom for city view
-                disableDefaultUI: false, // Keeps zoom controls visible
-                styles: [
-                    { "featureType": "all", "elementType": "all", "stylers": [{ "saturation": -80 }, { "lightness": 10 }] },
-                    { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#1a1a1a" }] }
-                ]
-            });
-
-            // Add a custom marker for your location
-            const marker = new google.maps.Marker({
-                position: danaoCity,
-                map: map,
-                title: "Franklin Tripole | Danao City",
-                animation: google.maps.Animation.DROP
-            });
-
-            // Optional: Add a simple popup (InfoWindow)
-            const infoWindow = new google.maps.InfoWindow({
-                content: '<div style="color:#000; padding:5px;"><b>Franklin Tripole</b><br>Danao City, Cebu</div>'
-            });
-
-            marker.addListener("click", () => {
-                infoWindow.open(map, marker);
-            });
-        }
-    </script>
-
-    <script>
-
-
-
         (function () {
             const canvas = document.getElementById('footer-canvas');
             const ctx = canvas.getContext('2d');
             const footer = canvas.closest('footer');
             if (!footer) return;
             let W, H, stars = [], raf;
-
             let linkDistance = 110;
             let starCount = 160;
 
@@ -517,7 +326,6 @@
                 const mobile = window.matchMedia('(max-width: 640px)').matches;
                 starCount = mobile ? 70 : 160;
                 linkDistance = mobile ? 70 : 110;
-                // re-scatter stars to fill new size
                 stars = [];
                 for (let i = 0; i < starCount; i++) stars.push(mkStar());
             }
@@ -563,23 +371,17 @@
                 raf = requestAnimationFrame(draw);
             }
 
-            // ResizeObserver fires whenever the footer's size changes
             const ro = new ResizeObserver(() => { resize(); });
             ro.observe(footer);
-
-            // Also init once the page is fully loaded
             window.addEventListener('load', () => { resize(); cancelAnimationFrame(raf); draw(); });
-
             resize();
             draw();
         })();
 
-        /* Hero neural network */
         (function () {
             const canvas = document.getElementById('hero-canvas');
             const ctx = canvas.getContext('2d');
             let W = canvas.width, H = canvas.height, stars = [], raf;
-
             let linkDistance = 100;
             let starCount = 120;
 
@@ -594,7 +396,6 @@
                 const mobile = window.matchMedia('(max-width: 640px)').matches;
                 starCount = mobile ? 60 : 120;
                 linkDistance = mobile ? 60 : 100;
-                // re-scatter stars
                 stars = [];
                 for (let i = 0; i < starCount; i++) stars.push(mkStar());
             }
@@ -640,23 +441,18 @@
                 raf = requestAnimationFrame(draw);
             }
 
-            // ResizeObserver for canvas size changes
             const ro = new ResizeObserver(() => { resize(); });
             ro.observe(canvas);
-
             window.addEventListener('load', () => { resize(); draw(); });
-
             resize();
             draw();
         })();
 
-        /* Scroll reveal */
-        const ro = new IntersectionObserver(entries => {
+        const revealObserver = new IntersectionObserver(entries => {
             entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.07 });
-        document.querySelectorAll('.reveal').forEach(r => ro.observe(r));
+        document.querySelectorAll('.reveal').forEach(r => revealObserver.observe(r));
 
-        /* Theme — default dark */
         const root = document.documentElement;
         const td = document.getElementById('theme-toggle');
         const tm = document.getElementById('theme-toggle-mob');
@@ -669,13 +465,11 @@
         setTheme(localStorage.getItem('ft_theme') !== 'light');
         [td, tm].forEach(b => b.addEventListener('click', () => setTheme(root.dataset.theme !== 'dark')));
 
-        /* Hamburger */
         const ham = document.getElementById('hamburger');
         const mob = document.getElementById('mobile-menu');
         ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); });
         document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => { ham.classList.remove('open'); mob.classList.remove('open'); }));
 
-        /* Modal */
         const modalData = {
             hppygtm: {
                 name: "HPPY GTM", icon: '<span class="proj-icon-text">HG</span>', tag: "Worked Project",
@@ -697,107 +491,24 @@
             }
         };
 
-        function buildVideo(src) {
-            const panel = document.getElementById('modal-right');
-            panel.innerHTML = '';
-            if (!src) {
-                panel.innerHTML = '<div class="video-placeholder"><span class="ph-icon">🎬</span><span>Video coming soon</span></div>';
-                return;
-            }
-            const wrap = document.createElement('div'); wrap.className = 'video-wrap';
-            const bg = document.createElement('video'); bg.src = src; bg.className = 'video-bg'; bg.muted = true; bg.loop = true; bg.playsInline = true; bg.preload = 'metadata'; bg.setAttribute('aria-hidden', 'true'); bg.tabIndex = -1;
-            const vid = document.createElement('video'); vid.src = src; vid.className = 'modal-video'; vid.controls = true; vid.muted = true; vid.loop = true; vid.playsInline = true; vid.preload = 'metadata';
-            vid.addEventListener('play', () => bg.play());
-            vid.addEventListener('pause', () => bg.pause());
-            vid.addEventListener('seeked', () => { bg.currentTime = vid.currentTime; });
-            wrap.appendChild(bg); wrap.appendChild(vid); panel.appendChild(wrap);
-        }
-
         function openModal(id) {
-            const d = modalData[id]; if (!d) return;
-            document.getElementById('modal-title').textContent = d.name + ' — project info';
-            document.getElementById('modal-icon').innerHTML = d.icon;
-            document.getElementById('modal-proj-name').textContent = d.name;
-            document.getElementById('modal-tag').textContent = d.tag;
-            document.getElementById('modal-desc').textContent = d.desc;
-            document.getElementById('modal-role').textContent = d.role;
-            buildVideo(d.video || '');
+            const data = modalData[id];
+            if (!data) return;
+            document.getElementById('modal-name').textContent = data.name;
+            document.getElementById('modal-icon').innerHTML = data.icon;
+            document.getElementById('modal-tag').textContent = data.tag;
+            document.getElementById('modal-desc').textContent = data.desc;
+            document.getElementById('modal-role').textContent = data.role;
             document.getElementById('proj-modal').classList.add('open');
             document.body.classList.add('modal-open');
         }
 
-        var isExpanded = false;
-        function toggleExpand() {
-            isExpanded = !isExpanded;
-            document.getElementById('proj-modal').querySelector('.modal-box').classList.toggle('expanded', isExpanded);
-            document.getElementById('expand-icon').innerHTML = isExpanded
-                ? '<path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 0 2-2h3M3 16h3a2 2 0 0 0 2 2v3"/>'
-                : '<path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>';
-        }
-
         function closeModal() {
-            document.querySelectorAll('#modal-right video').forEach(v => v.pause());
             document.getElementById('proj-modal').classList.remove('open');
             document.body.classList.remove('modal-open');
-            if (isExpanded) { isExpanded = false; document.getElementById('proj-modal').querySelector('.modal-box').classList.remove('expanded'); }
         }
+
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-        /* Chatbot */
-        var FRANKLIN_SYSTEM = "You are an AI assistant on Franklin Tripole's portfolio. Only answer questions about Franklin. Be friendly and concise.\n\nFRANKLIN'S INFO:\nName: Franklin Tripole\nLocation: Danao City, Central Visayas, Philippines\nRole: Web Developer\nEmployer: HPPY Hour Agency (Web Developer)\n\nSkills: HTML5, CSS3, JavaScript, Webflow, PHP, MySQL, FlutterFlow, Supabase, Bash, Git, Figma, UI/UX, Networking, Responsive Design, Performance Optimization.\n\nProjects:\n1. HPPY GTM - Agency GTM strategy site. Franklin did the full Webflow build, layout, animations, CMS, performance.\n2. Ethos - Brand identity platform. Franklin built it in Webflow with visual identity system and responsive layouts.\n3. HPPY Hour Agency - Main agency hub. Franklin is core developer, handles Webflow build and maintenance.\n4. Scheduler App - Full-stack scheduling app (PHP, JS, MySQL).\n5. Digital Inventory System - Mobile inventory app (FlutterFlow, Supabase).\n6. Skyline Seeker - Real estate browser (HTML, CSS, JS).\n7. Vans Clone - Brand landing page recreation (HTML, CSS, JS).\n8. E-Commerce - Shopping system with cart (HTML, CSS, JS).\n\nAvailability: Open to freelance and full-time opportunities.\nContact: tripolefranklin67@gmail.com\nGitHub: syskraken.github.io\n\nRules: Only answer about Franklin. Redirect off-topic questions. Never invent information. For rates say he is open to discussion.";
-        var chatHistory = [];
-        var chatLoading = false;
-
-        function toggleChat() { var w = document.getElementById('chat-widget'); w.classList.toggle('open'); if (w.classList.contains('open')) setTimeout(() => document.getElementById('chat-input').focus(), 350); }
-        function sendSuggestion(btn) { document.getElementById('chat-input').value = btn.textContent; document.getElementById('chat-suggestions').style.display = 'none'; sendMessage(); }
-        function appendMessage(role, text) { var m = document.getElementById('chat-messages'); var msg = document.createElement('div'); msg.className = 'chat-msg ' + role; var b = document.createElement('div'); b.className = 'chat-bubble'; b.textContent = text; msg.appendChild(b); m.appendChild(msg); m.scrollTop = m.scrollHeight; }
-        function showTyping() { var m = document.getElementById('chat-messages'); var el = document.createElement('div'); el.className = 'chat-msg bot'; el.id = 'typing-indicator'; el.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>'; m.appendChild(el); m.scrollTop = m.scrollHeight; }
-        function hideTyping() { var el = document.getElementById('typing-indicator'); if (el) el.remove(); }
-
-        async function sendMessage() {
-            if (chatLoading) return;
-            var input = document.getElementById('chat-input');
-            var text = input.value.trim(); if (!text) return;
-            input.value = ''; input.style.height = 'auto';
-            document.getElementById('chat-suggestions').style.display = 'none';
-            appendMessage('user', text);
-            chatHistory.push({ role: 'user', content: text });
-            chatLoading = true; document.getElementById('chat-send').disabled = true; showTyping();
-            try {
-                var res = await fetch('https://api.anthropic.com/v1/messages', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, system: FRANKLIN_SYSTEM, messages: chatHistory }) });
-                var data = await res.json();
-                var reply = (data.content && data.content[0] && data.content[0].text) ? data.content[0].text : "Sorry, I couldn't get a response. Try again!";
-                chatHistory.push({ role: 'assistant', content: reply });
-                hideTyping(); appendMessage('bot', reply);
-            } catch (err) { hideTyping(); appendMessage('bot', 'Oops, something went wrong. Please try again.'); }
-            chatLoading = false; document.getElementById('chat-send').disabled = false;
-        }
-
-        document.getElementById('chat-input').addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } });
-        document.getElementById('chat-input').addEventListener('input', function () { this.style.height = 'auto'; this.style.height = Math.min(this.scrollHeight, 100) + 'px'; });
-
-        async function loadPageCounter() {
-            try {
-                const res = await fetch('https://api.counterapi.dev/v1/frankenstein001/portfolio_v2');
-                if (!res.ok) return;
-                const data = await res.json();
-                const count = data.value ?? data.count ?? data.total ?? 0;
-                const el = document.getElementById('page-count');
-                if (el) el.textContent = count;
-            } catch (err) {
-                // silent fail
-            }
-        }
-        loadPageCounter();
-
-        /* Discord ping */
-        const webhookUrl = "https://discord.com/api/webhooks/1487812551684133096/Aw5Va-HdSAD5Z0sG5ik3UtprXFS_7RF-KNWMPFaUh8YpAZ30Va0e016-7bcJOdh81bOI";
-        if (!sessionStorage.getItem('vp')) {
-            fetch('https://ipapi.co/json/').then(r => r.json()).then(d => {
-                fetch(webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ content: `**New Portfolio Visitor**\n**City:** ${d.city || 'Unknown'}\n**Country:** ${d.country_name || 'Unknown'}\n**ISP:** ${d.org || 'Unknown'}\n**Time:** ${new Date().toLocaleTimeString()}` }) });
-                sessionStorage.setItem('vp', '1');
-            }).catch(() => { fetch(webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ content: '**New Portfolio Visitor** *(location hidden)*' }) }); sessionStorage.setItem('vp', '1'); });
-        }
     </script>
 </body>
 
