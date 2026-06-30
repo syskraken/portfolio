@@ -859,6 +859,21 @@
             .hero-img-wrap { order: -1; display: flex; justify-content: center; }
             .hero-img-frame { width: clamp(170px, 46vw, 220px); }
             .hero-badge { left: 50%; transform: translateX(-50%); }
+
+            .exp-card {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                padding-top: 60px;
+            }
+            .exp-icon {
+                position: absolute;
+                top: 24px;
+                right: 24px;
+            }
+            .exp-body {
+                width: 100%;
+            }
         }
 
         @media(max-width:480px) {
