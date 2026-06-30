@@ -1532,6 +1532,7 @@
             transform-origin: bottom right;
             opacity: 0;
             pointer-events: none;
+            display: none;
             transition: transform .35s var(--ease), opacity .3s;
         }
 
@@ -1539,6 +1540,7 @@
             transform: translateY(0) scale(1);
             opacity: 1;
             pointer-events: all;
+            display: flex;
         }
 
         .chat-header {
